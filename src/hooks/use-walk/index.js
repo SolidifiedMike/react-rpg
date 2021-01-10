@@ -24,7 +24,8 @@ export default function useWalk(maxSteps) {
     // console.log(dir);
     setDir(prev => {
       if (directions[dir] == prev) {
-        if (!(position.x + modifier[dir].x == 32 && position.y + modifier[dir].y == 32)) {
+        if (!(position.x + modifier[dir].x >= 32 && position.x + modifier[dir].x <= 48 &&
+          position.y + modifier[dir].y >= 32 && position.y + modifier[dir].y <= 48)) {
           move(dir);
         }
       } 
