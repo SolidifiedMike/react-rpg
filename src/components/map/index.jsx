@@ -28,7 +28,7 @@ export default function Map({tiles, setTiles, activeTile, tileset, size}) {
     style={{
       boxSizing: "border-box",
       backgroundColor: "white",
-      width: size.width,
+      width: size.width*32,
     }}
   >
     {
@@ -36,10 +36,11 @@ export default function Map({tiles, setTiles, activeTile, tileset, size}) {
         {
           row.map((tile,x) => (
             <div
-            onClick={() => dropTile(x, y)}
+            // onClick={() => dropTile(x, y)}
               style={{
                 borderTop: "1px solid black",
                 borderRight: "1px solid black",
+                marginTop: "-1px",
                 background: `url(/sprites/${tileset}.png)`,
                 backgroundPosition: `-${tile.v.x*32}px -${tile.v.y*32}px`,
                 backgroundRepeat: "no-repeat",

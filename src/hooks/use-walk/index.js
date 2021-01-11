@@ -28,6 +28,7 @@ export default function useWalk(maxSteps) {
           position.y + modifier[dir].y >= 32 && position.y + modifier[dir].y <= 48)) {
           move(dir);
         }
+        // move(dir);
       } 
       return directions[dir];
     });

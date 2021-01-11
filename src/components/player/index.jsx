@@ -17,6 +17,9 @@ export default function Player({skin}) {
     // if (directions.hasOwnProperty(dir)) {
     //   console.dir(dir);
     // }
+    // if (dir == "down" || dir == "left" || dir == "right" || dir == "up") {
+      
+    // }
     // walk the player
     walk(dir);
     // prevent scroll the screen when pressing keys
