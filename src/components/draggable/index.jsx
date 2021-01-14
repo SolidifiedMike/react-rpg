@@ -2,30 +2,14 @@ import React, { useEffect, useState } from "react";
 import useDraggable from "../../hooks/use-draggable";
 import TilePalette from "../tile-palette";
 import Map from "../map";
+import mapConfig from "../../map_configs";
 
 export default function Draggable() {
   // const {position} = useDraggable("handle");
+  const { myTiles, myPalette } = mapConfig();
   const [tileset, setTileset] = useState("zones/spring");
   const [activeTile, setActiveTile]  = useState({x: 1, y: 4});
   const [tiles, setTiles] = useState([]);
-
-  // 目前是用这个matrix去新建一个教程里的matrix，可能performance不太行？
-  // 矩阵的长宽决定了地图的长宽（格子数，每个格子32*32）
-  // map matrix
-  const myTiles = [[3, 3, 3, 3, 3],
-                   [1, 1, 1, 1, 1],
-                   [2, 2, 2, 2, 2],
-                   [3, 3, 3, 3, 3]];
-
-  // 每个id对应的格子
-  // x和y是对应素材图上的坐标
-  const myPalette = {
-    0: {x: 6, y: 0},
-    1: {x: 1, y: 5},
-    2: {x: 1, y: 3},
-    3: {x: 0, y: 2},
-    4: {x: 0, y: 0},
-  }
   
   const [mapSize, setMapSize] = useState({
     width: myTiles[0].length,

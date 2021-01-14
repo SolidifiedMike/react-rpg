@@ -5,8 +5,8 @@ export default function Sprite({ image, data, position }) {
     return <div
         style={{
             position: "absolute",
-            top: position.y,
-            left: position.x,
+            top: position.y * 32,
+            left: position.x * 32,
             display: "inline-block",
             height: `${h}px`,
             width: `${w}px`,

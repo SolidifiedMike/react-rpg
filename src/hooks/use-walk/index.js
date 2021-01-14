@@ -11,7 +11,7 @@ export default function useWalk(maxSteps) {
     up: 3,
   };
 
-  const stepSize = 16;
+  const stepSize = 0.5;
 
   const modifier = {
     down: {x: 0, y: stepSize},
@@ -20,14 +20,26 @@ export default function useWalk(maxSteps) {
     up: {x: 0, y: -stepSize},
   }
 
-  function walk(dir) {
+  function walk(dir, tiles, palette) {
     // console.log(dir);
     setDir(prev => {
       if (directions[dir] == prev) {
-        if (!(position.x + modifier[dir].x >= 32 && position.x + modifier[dir].x <= 48 &&
-          position.y + modifier[dir].y >= 32 && position.y + modifier[dir].y <= 48)) {
+        // if (!(position.x + modifier[dir].x >= 32 && position.x + modifier[dir].x <= 48 &&
+        //   position.y + modifier[dir].y >= 32 && position.y + modifier[dir].y <= 48)) {
+        //   move(dir);
+        // }
+
+        // get the next tile id
+        var next_pos_x = Math.floor(position.x + modifier[dir].x);
+        var next_pos_y = Math.floor(position.y + modifier[dir].y);
+        var next_tile_id = tiles[next_pos_y][next_pos_x];
+        // determine if move
+        if (palette[next_tile_id].obs != 1) {
           move(dir);
         }
+
+        
+
         // move(dir);
       } 
       return directions[dir];
