@@ -1,17 +1,12 @@
 import React from "react";
 import Player from "./components/player";
-import Draggable from "./components/draggable";
+import Board from "./components/board";
 
 function App() {
-  const data = {
-    h: 32,
-    w: 32,
-  }
   return (
-    
-    <div className="zone-container">
-      <Draggable/>
-      <Player skin="f1"/>
+    <div>
+      <Board />
+      <Player skin="f1" />
     </div>
   );
 }
