@@ -57,16 +57,7 @@ export default function Board() {
 
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: 700,
-        height: 500,
-        backgroundColor: "grey",
-        overflow: "hidden",
-        border: "1px solid black",
-      }}
-    >
+    <div>
       {/* Upper Map */}
       <div style={{ position: "absolute", zIndex: 2}}>
         {

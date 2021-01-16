@@ -1,12 +1,10 @@
 import React from "react";
-import Player from "./components/player";
-import Board from "./components/board";
+import World from "./components/world";
 
 function App() {
   return (
     <div>
-      <Board />
-      <Player skin="f1" />
+      <World />
     </div>
   );
 }
