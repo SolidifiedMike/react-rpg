@@ -9,9 +9,14 @@ export default function useInteract() {
     // get the tile id
     var currentTileId = mapMatrix[currentY][currentX];
     // if current at interactable position
-    if (tileMap[currentTileId].interact == 1) {
+    if (tileMap[currentTileId].interact === 1) {
       // then toggle the ifShow value
       setIfShow(!ifShow);
+    }
+    else {
+      // stop interaction when the player
+      // is not at interactable position
+      setIfShow(false);
     }
   }
 

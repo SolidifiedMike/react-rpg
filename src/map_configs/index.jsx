@@ -4,7 +4,7 @@ export default function mapConfig() {
                      [1, 1, 1, 1, 1],
                      [2, 2, 2, 2, 2],
                      [3, 5, 3, 4, 3]];
-  
+
   const mapMatrix2 = [[3, 3, 3, 3, 3],
                      [3, 3, 3, 3, 3],
                      [3, 3, 3, 3, 3],
@@ -24,7 +24,7 @@ export default function mapConfig() {
 
   // array of map matries
   // mapMatries[0] is the upper map, mapMatries[1] is the lower map
-  var mapMatries = new Array();
+  var mapMatries = [];
   mapMatries.push(mapMatrix);
   mapMatries.push(mapMatrix2);
 

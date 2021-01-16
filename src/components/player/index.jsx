@@ -1,5 +1,6 @@
 import React from "react";
 import Actor from "../actor";
+import Popup from "../popup";
 import useKeyPress from "../../hooks/use-key-press";
 import useWalk from "../../hooks/use-walk";
 import useInteract from "../../hooks/use-interact";
@@ -12,6 +13,7 @@ export default function Player({ skin }) {
 
   Return:
     A actor component with player data
+    A pop-up window when player interact with object
   */
   const { mapMatries, tileMap } = mapConfig();
   const mapMatrix = mapMatries[0];
@@ -24,26 +26,27 @@ export default function Player({ skin }) {
 
   useKeyPress((e) => {
     const myKey = e.key.replace("Arrow", "").toLowerCase();
-    if (myKey == "left" || myKey == "right" || myKey == "up" || myKey == "down") {
+    if (myKey === "left" || myKey === "right" || myKey === "up" || myKey === "down") {
       // try to walk the player
       walk(myKey, mapMatrix, tileMap);
     }
 
-    if (myKey == "e") {
-      // try to interact
+    if (myKey === "e") {
+      // check if the player can interact with the tile
       interact(position, mapMatrix, tileMap);
     }
-    // console.log(ifShow);
-    // prevent scroll the screen when pressing keys
     e.preventDefault();
   })
 
   return (
-    <Actor
-      sprite={`/sprites/skins/${skin}.png`}
-      data={data}
-      step={step}
-      direction={direction}
-      position={position}
-    />);
+    <>
+      <Actor
+        sprite={`/sprites/skins/${skin}.png`}
+        data={data}
+        step={step}
+        direction={direction}
+        position={position}
+      />
+      <Popup ifShow={ifShow} />
+    </>);
 }
