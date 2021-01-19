@@ -3,7 +3,8 @@ import mapConfig from "../../map_configs";
 
 export default function Board() {
 
-  const tileset = "zones/spring";
+  const tileset = "interiors/inter9";
+  const tileset2 = "interiors/livingRoom";
   const [upTiles, setUpTiles] = useState([]);
   const [downTiles, setDownTiles] = useState([]);
   // For now, we don't need to set Tile or set mapSize
@@ -14,7 +15,7 @@ export default function Board() {
     height: mapMatrix.length,
   });
   */
-
+  console.log(window.innerWidth);
 
   // Store the mapConfig() to tiles when the component mount
   useEffect(() => {
@@ -70,7 +71,7 @@ export default function Board() {
                       //borderTop: "1px solid black",
                       //borderRight: "1px solid black",
                       // marginTop: "-1px",
-                      background: `url(/sprites/${tileset}.png)`,
+                      background: `url(/sprites/${tileset2}.png)`,
                       backgroundPosition: `-${tile.v.x * 32}px -${tile.v.y * 32}px`,
                       backgroundRepeat: "no-repeat",
                       width: 32,
@@ -95,7 +96,7 @@ export default function Board() {
                   <div
                     style={{
                       background: `url(/sprites/${tileset}.png)`,
-                      backgroundPosition: `-${0 * 32}px -${2 * 32}px`,
+                      backgroundPosition: `-${tile.v.x * 32}px -${tile.v.y * 32}px`,
                       backgroundRepeat: "no-repeat",
                       width: 32,
                       height: 32,
