@@ -34,15 +34,32 @@ export default function useWalk(maxSteps) {
     setDirection(prev => {
       if (directions[direction] === prev) {
         // get the next tile id
-        var next_pos_x = Math.floor(position.x + modifier[direction].x);
-        var next_pos_y = Math.floor(position.y + modifier[direction].y);
+        var next_pos_x = position.x + modifier[direction].x;
+        var next_pos_y = position.y + modifier[direction].y;
+        // dont know why but works
+        if (direction === "down") {
+          next_pos_y = Math.ceil(next_pos_y);
+        } else if (direction === "up") {
+          next_pos_y = Math.floor(next_pos_y);
+        } else if (direction === "right") {
+          next_pos_x = Math.ceil(next_pos_x);
+        } else if (direction === "left") {
+          next_pos_x = Math.floor(next_pos_x);
+        }
+        var next_pos_x_1 = Math.floor(next_pos_x);
+        var next_pos_y_1 = Math.floor(next_pos_y);
+        var next_pos_x_2 = Math.ceil(next_pos_x);
+        var next_pos_y_2 = Math.ceil(next_pos_y);
+        
         // check board borders
         if (0 <= next_pos_x && next_pos_x < mapMatrix[0].length &&
           0 <= next_pos_y && next_pos_y < mapMatrix.length) {
-          var next_tile_id = mapMatrix[next_pos_y][next_pos_x];
-          var base_tile_id = baseMatrix[next_pos_y][next_pos_x];
+          var next_tile_id_1 = mapMatrix[next_pos_y_1][next_pos_x_1];
+          var next_tile_id_2 = mapMatrix[next_pos_y_2][next_pos_x_2];
+          var base_tile_id_1 = baseMatrix[next_pos_y_1][next_pos_x_1];
+          var base_tile_id_2 = baseMatrix[next_pos_y_2][next_pos_x_2];
           // determine if move
-          if (tileMap[next_tile_id].obs !== 1 && tileMap[base_tile_id].obs !== 1)  {
+          if (tileMap[next_tile_id_1].obs !== 1 && tileMap[next_tile_id_2].obs !== 1 && tileMap[base_tile_id_1].obs !== 1 && tileMap[base_tile_id_2].obs !== 1)  {
             move(direction);
           }
         }
