@@ -64,6 +64,9 @@ export default function Board() {
           upTiles.map((row, y) =>
             <div style={{ display: "flex" }} key={y}>
               {
+                /*
+                FIXEME: only one image can be rendered at a time
+                */
                 row.map((tile, x) =>
                   <div
                     style={{

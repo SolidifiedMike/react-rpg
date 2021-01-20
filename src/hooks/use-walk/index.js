@@ -50,7 +50,7 @@ export default function useWalk(maxSteps) {
         var next_pos_y_1 = Math.floor(next_pos_y);
         var next_pos_x_2 = Math.ceil(next_pos_x);
         var next_pos_y_2 = Math.ceil(next_pos_y);
-        
+
         // check board borders
         if (0 <= next_pos_x && next_pos_x < mapMatrix[0].length &&
           0 <= next_pos_y && next_pos_y < mapMatrix.length) {
@@ -59,7 +59,8 @@ export default function useWalk(maxSteps) {
           var base_tile_id_1 = baseMatrix[next_pos_y_1][next_pos_x_1];
           var base_tile_id_2 = baseMatrix[next_pos_y_2][next_pos_x_2];
           // determine if move
-          if (tileMap[next_tile_id_1].obs !== 1 && tileMap[next_tile_id_2].obs !== 1 && tileMap[base_tile_id_1].obs !== 1 && tileMap[base_tile_id_2].obs !== 1)  {
+          if (tileMap[next_tile_id_1].obs !== 1 && tileMap[next_tile_id_2].obs !== 1
+            && tileMap[base_tile_id_1].obs !== 1 && tileMap[base_tile_id_2].obs !== 1) {
             move(direction);
           }
         }

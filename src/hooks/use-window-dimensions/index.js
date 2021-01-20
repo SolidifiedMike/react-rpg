@@ -7,19 +7,22 @@ function getWindowDimensions() {
     height
   };
 }
-  
+
 export default function useWindowDimensions() {
-const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+  /*
+  Returns current window's height and width
+  */
 
-useEffect(() => {
-  function handleResize() {
-  setWindowDimensions(getWindowDimensions());
-  }
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []);
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
 
-return windowDimensions;
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
 }
-  

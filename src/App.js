@@ -4,14 +4,14 @@ import useWindowDimensions from "./hooks/use-window-dimensions";
 
 function App() {
   const { width, height } = useWindowDimensions();
-  console.log("width: " + width + " hieght: " + height);
+  /* FIXME: when this app renders, there's a white gap
+  around the edge (all sides) of the screen */
 
   return (
     <div style={{
-      width,
-      height,
-      backgroundColor: "grey"
-      }}>
+      width: width - 50,
+      height: height - 50,
+    }}>
       <World />
     </div>
   );

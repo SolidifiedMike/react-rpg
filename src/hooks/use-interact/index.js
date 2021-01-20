@@ -1,6 +1,12 @@
 import { useState } from "react";
 
 export default function useInteract() {
+  /*
+  Returns a boolean value, ifShow.
+  If ifShow is true, the player can interact with this object,
+  Otherwise, the player cannot.
+  */
+
   const [ifShow, setIfShow] = useState(false);
 
   function interact(position, mapMatrix, tileMap) {
