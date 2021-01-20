@@ -11,7 +11,7 @@ export default function useWalk(maxSteps) {
     direction: sprite's direction
     step: sprite's animation frame
   */
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 1, y: 2 });
   const [direction, setDirection] = useState(0);
   const [step, setStep] = useState(0);
 
@@ -30,7 +30,7 @@ export default function useWalk(maxSteps) {
     up: { x: 0, y: -stepSize },
   }
 
-  function walk(direction, mapMatrix, tileMap) {
+  function walk(direction, mapMatrix, baseMatrix, tileMap) {
     setDirection(prev => {
       if (directions[direction] === prev) {
         // get the next tile id
@@ -40,8 +40,9 @@ export default function useWalk(maxSteps) {
         if (0 <= next_pos_x && next_pos_x < mapMatrix[0].length &&
           0 <= next_pos_y && next_pos_y < mapMatrix.length) {
           var next_tile_id = mapMatrix[next_pos_y][next_pos_x];
+          var base_tile_id = baseMatrix[next_pos_y][next_pos_x];
           // determine if move
-          if (tileMap[next_tile_id].obs !== 1) {
+          if (tileMap[next_tile_id].obs !== 1 && tileMap[base_tile_id].obs !== 1)  {
             move(direction);
           }
         }

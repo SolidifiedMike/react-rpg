@@ -17,6 +17,7 @@ export default function Player({ skin }) {
   */
   const { mapMatries, tileMap } = mapConfig();
   const mapMatrix = mapMatries[0];
+  const baseMatrix = mapMatries[1];
   const { direction, step, walk, position } = useWalk(3);
   const { ifShow, interact } = useInteract();
   const data = {
@@ -28,7 +29,7 @@ export default function Player({ skin }) {
     const myKey = e.key.replace("Arrow", "").toLowerCase();
     if (myKey === "left" || myKey === "right" || myKey === "up" || myKey === "down") {
       // try to walk the player
-      walk(myKey, mapMatrix, tileMap);
+      walk(myKey, mapMatrix, baseMatrix, tileMap);
     }
 
     if (myKey === "e") {

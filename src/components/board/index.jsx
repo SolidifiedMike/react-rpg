@@ -15,7 +15,6 @@ export default function Board() {
     height: mapMatrix.length,
   });
   */
-  console.log(window.innerWidth);
 
   // Store the mapConfig() to tiles when the component mount
   useEffect(() => {
@@ -68,9 +67,6 @@ export default function Board() {
                 row.map((tile, x) =>
                   <div
                     style={{
-                      //borderTop: "1px solid black",
-                      //borderRight: "1px solid black",
-                      // marginTop: "-1px",
                       background: `url(/sprites/${tileset2}.png)`,
                       backgroundPosition: `-${tile.v.x * 32}px -${tile.v.y * 32}px`,
                       backgroundRepeat: "no-repeat",
