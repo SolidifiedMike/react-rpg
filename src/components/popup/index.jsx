@@ -7,8 +7,8 @@ export default function Popup({ ifShow = false }) {
       { ifShow &&
         <div style={{
           backgroundColor: "white",
-          width: 300,
-          height: 200,
+          width: 600,
+          height: 400,
         }}>
           <p>
             Hello World!
