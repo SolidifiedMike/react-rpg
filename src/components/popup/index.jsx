@@ -1,4 +1,5 @@
 import React from "react";
+import Comment from "../comment";
 
 export default function Popup({ ifShow = false }) {
 
@@ -7,12 +8,21 @@ export default function Popup({ ifShow = false }) {
       { ifShow &&
         <div style={{
           backgroundColor: "white",
-          width: 600,
+          width: 300,
           height: 400,
         }}>
-          <p>
-            Hello World!
-          </p>
+          <div className ="ui comments">
+            <h3 className="ui dividing header">Comments</h3>
+            <Comment name="ws" message="水贴" date="2021/1/15" />
+            <form className="ui reply form">
+              <div className="field">
+                <textarea></textarea>
+              </div>
+              <div className="ui blue labeled submit icon button">
+                <i className="icon edit"></i> Add Reply
+              </div>
+            </form>
+          </div>
         </div>
       }
     </div>
