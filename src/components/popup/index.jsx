@@ -8,18 +8,18 @@ export default function Popup({ ifShow = false }) {
       { ifShow &&
         <div style={{
           backgroundColor: "white",
-          width: 300,
+          width: 400,
           height: 400,
         }}>
           <div className ="ui comments">
-            <h3 className="ui dividing header">Comments</h3>
+            <h3 className="ui dividing header">Posts</h3>
             <Comment name="ws" message="水贴" date="2021/1/15" />
             <form className="ui reply form">
               <div className="field">
                 <textarea></textarea>
               </div>
               <div className="ui blue labeled submit icon button">
-                <i className="icon edit"></i> Add Reply
+                <i className="icon edit"></i> Add Post
               </div>
             </form>
           </div>

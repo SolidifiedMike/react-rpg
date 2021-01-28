@@ -4,14 +4,13 @@ import Board from "../board";
 
 export default function World() {
   const MAPWIDTH = 19 * 32;
+  const MAPHEIGHT = 13 * 32;
 
   return (
     <div
       style={{
-        position: "absolute",
-        display: "flex",
-        marginLeft: (window.innerWidth - MAPWIDTH) / 2,
-        marginTop: "2%",
+        width: MAPWIDTH,
+        height: MAPHEIGHT,
       }}
     >
       <Board />

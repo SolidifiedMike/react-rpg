@@ -9,8 +9,11 @@ function App() {
 
   return (
     <div style={{
-      width: width - 50,
-      height: height - 50,
+      width,
+      height,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     }}>
       <World />
     </div>
