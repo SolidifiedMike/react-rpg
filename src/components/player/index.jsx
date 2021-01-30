@@ -33,9 +33,8 @@ export default function Player({ skin }) {
       e.preventDefault();
     }
 
-    if (myKey === "e") {
+    if (myKey === "tab") {
       // check if the player can interact with the tile
-      // FIXME: cannot enter character "e" in the message bot
       interact(position, mapMatrix, tileMap);
       e.preventDefault();
     }
