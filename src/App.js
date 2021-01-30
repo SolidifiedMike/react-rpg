@@ -12,6 +12,7 @@ function App() {
       width,
       height,
       display: "flex",
+      // border: "3px solid #73AD21",
       justifyContent: "center",
       alignItems: "center",
     }}>

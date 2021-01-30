@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function Popup({ name, message, date }) {
+export default function Popup(props) {
+  const {user, title, content, date} = props.data
 
   return (
     <div className="comment">
@@ -8,12 +9,15 @@ export default function Popup({ name, message, date }) {
         <img src="" />
       </a>
       <div className="content">
-        <a className="author">{name}</a>
+        <a className="author">{user}</a>
         <div className="metadata">
           <span className="date">{date}</span>
         </div>
         <div className="text">
-          {message}
+          {title}
+        </div>
+        <div className="text">
+          {content}
         </div>
         <div className="actions">
           <a className="reply">Reply</a>

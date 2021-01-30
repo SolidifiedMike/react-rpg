@@ -1,19 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
 import Comment from "../comment";
+import postData from "../../data/postData.js";
 
 export default function Popup({ ifShow = false }) {
+  // get posts from json file
+  const [posts, setPosts] = useState(postData);
+
+  const postComponents = posts.map(post => {
+    return <Comment id={post.id} data={post}/>
+  })
+
+  const addPost = (user, title, content, date) => {
+    setPosts([...posts, {id: 99, user, title, content, date}])
+  }
 
   return (
-    <div style={{ position: "absolute", zIndex: 4 }}>
+    <div style={{
+      position: "absolute",
+      left: 10, 
+      zIndex: 4,
+    }}>
       { ifShow &&
         <div style={{
           backgroundColor: "white",
           width: 400,
           height: 400,
+          overflow: "auto",
         }}>
           <div className ="ui comments">
             <h3 className="ui dividing header">Posts</h3>
-            <Comment name="ws" message="水贴" date="2021/1/15" />
+            {postComponents}
             <form className="ui reply form">
               <div className="field">
                 <textarea></textarea>

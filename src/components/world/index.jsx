@@ -11,6 +11,7 @@ export default function World() {
       style={{
         width: MAPWIDTH,
         height: MAPHEIGHT,
+        // border: "3px solid #73AD21",
       }}
     >
       <Board />

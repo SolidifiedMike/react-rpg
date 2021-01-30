@@ -40,7 +40,10 @@ export default function Player({ skin }) {
   })
 
   return (
-    <div style={{ position: "absolute"}}>
+    <div style={{ 
+      position: "absolute",
+      // border: "3px solid #73AD21",
+    }}>
       <Actor
         sprite={`/sprites/skins/${skin}.png`}
         data={data}
@@ -49,5 +52,6 @@ export default function Player({ skin }) {
         position={position}
       />
       <Popup ifShow={ifShow} />
-    </div>);
+    </div>
+    );
 }
