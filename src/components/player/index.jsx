@@ -30,17 +30,19 @@ export default function Player({ skin }) {
     if (myKey === "left" || myKey === "right" || myKey === "up" || myKey === "down") {
       // try to walk the player
       walk(myKey, mapMatrix, baseMatrix, tileMap);
+      e.preventDefault();
     }
 
     if (myKey === "e") {
       // check if the player can interact with the tile
+      // FIXME: cannot enter character "e" in the message bot
       interact(position, mapMatrix, tileMap);
+      e.preventDefault();
     }
-    e.preventDefault();
   })
 
   return (
-    <div style={{ 
+    <div style={{
       position: "absolute",
       // border: "3px solid #73AD21",
     }}>

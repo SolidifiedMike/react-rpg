@@ -17,8 +17,10 @@ export default function Popup({ ifShow = false }) {
   return (
     <div style={{
       position: "absolute",
-      left: 10, 
       zIndex: 4,
+      left: 100,
+      justifyContent: "center",
+      alignItems: "center",
     }}>
       { ifShow &&
         <div style={{
