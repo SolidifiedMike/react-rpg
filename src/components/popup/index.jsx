@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Comment from "../comment";
-import postData from "../../data/postData.js";
+// import postData from "../../data/postData.js";
 
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 const FETCH_POSTS_QUERY = gql `
@@ -17,7 +17,22 @@ const FETCH_POSTS_QUERY = gql `
   }
 `
 
+const CREATE_POST_MUTATION = gql`
+  mutation createPost($user: String!, $title: String!, $content: String!) {
+    createPost(user: $user, title: $title, content: $content) {
+      id
+      user
+      title
+      content
+    }
+  }
+`;
+
+
+
 export default function Popup({ ifShow = false }) {
+  // init mutation
+  const [createPost, { mdata }] = useMutation(CREATE_POST_MUTATION);
   // query from database
   let myPosts = []
   const { loading, data } = useQuery(FETCH_POSTS_QUERY);
@@ -25,16 +40,23 @@ export default function Popup({ ifShow = false }) {
     myPosts = { data: data.getPosts }.data;
   }
 
-  // get posts from json file
-  // const [posts, setPosts] = useState(myPosts);
-
+  // map posts to components
   const postComponents = myPosts.map(post => {
     return <Comment id={post.id} data={post}/>
   })
 
-  // const addPost = (user, title, content, date) => {
-  //   setPosts([...posts, {id: 99, user, title, content, date}])
-  // }
+  // get the input content
+  const [content, setContent] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(content);
+    createPost({ variables: {
+      user: "temp user",
+      title: "temp title",
+      content: content
+    }})
+  }
 
   return (
     <div style={{
@@ -54,13 +76,13 @@ export default function Popup({ ifShow = false }) {
             {loading ? 
             (<h3> loading... </h3>) : 
             (postComponents)}
-            <form className="ui reply form">
+            <form className="ui reply form" onSubmit={handleSubmit}>
               <div className="field">
-                <textarea></textarea>
+                <textarea type="text" required value={content} onChange={(e) => setContent(e.target.value)}>
+                  write something here
+                </textarea>
               </div>
-              <div className="ui blue labeled submit icon button">
-                <i className="icon edit"></i> Add Post
-              </div>
+              <input type="submit" />
             </form>
           </div>
         </div>
