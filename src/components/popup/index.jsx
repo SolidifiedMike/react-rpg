@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Comment from "../comment";
-// import postData from "../../data/postData.js";
 
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
