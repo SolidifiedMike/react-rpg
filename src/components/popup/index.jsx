@@ -46,14 +46,16 @@ export default function Popup({ ifShow = false }) {
 
   // get the input content
   const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
+  const [user, setUser] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(content);
+    // console.log(content);
     createPost({ variables: {
-      user: "temp user",
-      title: "temp title",
-      content: content
+      user,
+      title,
+      content,
     }})
   }
 
@@ -77,9 +79,11 @@ export default function Popup({ ifShow = false }) {
             (postComponents)}
             <form className="ui reply form" onSubmit={handleSubmit}>
               <div className="field">
+                <input type="text" required value={title} onChange={(e) => setTitle(e.target.value)}></input>
                 <textarea type="text" required value={content} onChange={(e) => setContent(e.target.value)}>
                   write something here
                 </textarea>
+                <input type="text" required value={user} onChange={(e) => setUser(e.target.value)}></input>
               </div>
               <input type="submit" />
             </form>
